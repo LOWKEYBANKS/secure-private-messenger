@@ -1,0 +1,142 @@
+# Android Development
+*.iml
+*.hprof
+*.patch
+*.bak
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Local configuration file with sensitive data
+local.properties
+signing.properties
+keystore.properties
+
+# Android Studio
+.idea/
+*.iws
+*.ipr
+*~
+*.swp
+*.swo
+.settings/
+.project
+
+# IDE autogen files
+/out/
+.DS_Store
+*.log
+*.tmp
+*.temp
+
+# Android specific
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.mp3
+*.apk
+*.aab
+*.aar
+*.jar
+*.so
+
+# Privacy-specific ignores
+# Never commit user data or logs
+user-data/
+logs/
+crash-logs/
+debug-info/
+user-cookies/
+cache-files/
+
+# Temporary build files
+tmp/
+temp/
+.tmp/
+
+# Backup files
+backup/
+backups/
+
+# Test output files
+test-results/
+test-output/
+
+# Coverage reports
+coverage/
+.coverage/
+
+# Documentation builds
+docs/_build/
+docs/site-build/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Database files (if using local databases)
+*.db
+*.sqlite
+*.sqlite3
+
+# Configuration with secrets
+config/secrets.properties
+config/private-keys.json
+
+# Network configuration
+network-config.json
+server-list.json
+
+# Temporary testing files
+test-temp/
+testing-data/
+
+# Performance profile data
+profiling/
+benchmark-results/
+
+# IDE and editor specific
+.vscode/
+.sublime-project/
+sublime-workspace
+
+# Mac specific
+.AppleDouble
+.LSOverride
+
+# Windows specific  
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux specific
+*~
+
+# Node.js (if used for build tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if used for scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+ENV/
+.env
+
+# Dependencies
+**/libs/*.jar
+**/libs/*.so
+**/libs/*.aar
