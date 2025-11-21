@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "libs.<module>"
+    namespace = "libs.<zeus>"
     compileSdk = 34
 }
 
