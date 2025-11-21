@@ -1,0 +1,15 @@
+rootProject.name = "secure-private-messenger"
+
+include(":app")
+
+include(":libs:libsodium")
+include(":libs:livekit")
+include(":libs:tor")
+include(":libs:briar")
+include(":libs:zeus")
+
+include(":modules:core-crypto")
+include(":modules:module-livekit")
+include(":modules:module-payments")
+include(":modules:core-briar")
+include(":modules:ui")
