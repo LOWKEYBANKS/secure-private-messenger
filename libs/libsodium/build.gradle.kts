@@ -8,4 +8,6 @@ android {
     compileSdk = 34
 }
 
-dependencies {}
+dependencies {
+    api("com.github.joshjdevl.libsodiumjni:libsodium-jni-aar:2.0.1")
+}

@@ -9,5 +9,5 @@ android {
 }
 
 dependencies {
-    implementation("info.guardianproject.netcipher:netcipher:2.1.0")
+    api("info.guardianproject.netcipher:netcipher:2.1.0")
 }

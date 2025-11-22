@@ -8,4 +8,6 @@ android {
     compileSdk = 34
 }
 
-dependencies {}
+dependencies {
+    api("io.livekit:livekit-android:2.0.0")
+}
