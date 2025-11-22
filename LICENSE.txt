@@ -29,5 +29,17 @@ This project incorporates work from:
 - TOR Project (BSD License) https://www.torproject.org/
 - Guardian Project (MIT License) https://guardianproject.info/
 
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+NOTICES:
+- This software combines multiple open-source components under MIT/BSD/Apache licenses
+- BITCHAT++ is intended for research, educational, and close communication circles
+- No warranty is provided; use at your own risk
+- Users are responsible for compliance with local laws regarding encrypted communications
+
+```0 ready for Lightning RPC integration  
+**✅ Cashu Fork** → `CashuWallet.java` with ecash token handling
+
 All third-party licenses are preserved in their original form.
 *** LICENSE COMPLETE ***
