@@ -1,6 +1,7 @@
 package com.lowkeybanks.bitchat
 
 import android.app.Application
+import android.content.Intent
 import com.lowkeybanks.bitchat.crypto.LibsodiumWrapper
 import com.lowkeybanks.bitchat.services.TorService
 import com.lowkeybanks.bitchat.livekit.LiveKitAdapter

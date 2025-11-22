@@ -3,60 +3,20 @@
     
     <!-- Network Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.
-                    
-                        ƒ
-                        ACCESS NETWORK STATE
-                    
-                " />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     
     <!-- Bluetooth Mesh -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.
-                    
-                        ƒ
-                        BLUETOOTH ADMIN
-                    
-                " />
-    <uses-permission android:name="android.permission.
-                    
-                        ƒ
-                        BLUETOOTH ADVERTISE
-                    
-                " />
-    <uses-permission android:name="android.permission.
-                    
-                        ƒ
-                        BLUETOOTH CONNECT
-                    
-                " />
-    <uses-permission android:name="android.permission.
-                    
-                        ƒ
-                        ACCESS FINE LOCATION
-                    
-                " />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     
     <!-- Storage & Camera -->
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.
-                    
-                        ƒ
-                        RECORD AUDIO
-                    
-                " />
-    <uses-permission android:name="android.permission.
-                    
-                        ƒ
-                        WRITE EXTERNAL STORAGE
-                    
-                " />
-    <uses-permission android:name="android.permission.
-                    
-                        ƒ
-                        READ EXTERNAL STORAGE
-                    
-                " />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     
     <application
         android:name=".BitchatApplication"
