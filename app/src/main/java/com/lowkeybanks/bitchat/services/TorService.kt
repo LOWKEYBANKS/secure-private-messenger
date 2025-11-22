@@ -9,12 +9,7 @@ class TorService : Service() {
     
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         initializeTor()
-        return 
-                    
-                        ƒ
-                        START STICKY
-                    
-                
+        return START_STICKY
     }
     
     private fun initializeTor() {

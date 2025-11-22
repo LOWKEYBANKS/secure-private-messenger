@@ -22,6 +22,10 @@ class BitchatApplication : Application() {
         cryptoWrapper = LibsodiumWrapper()
         cashuWallet = CashuWallet()
         
+        // Initialize adapters
+        liveKitAdapter = LiveKitAdapter(this, "127.0.0.1:9050")
+        zeusAdapter = ZeusAdapter("127.0.0.1:9050")
+        
         // Start Tor service
         startService(Intent(this, TorService::class.java))
     }

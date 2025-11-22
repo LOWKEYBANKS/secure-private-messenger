@@ -5,7 +5,7 @@ import io.livekit.android.Room
 import io.livekit.android.events.RoomEvent
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class LiveKitAdapter(private val torProxy: String) {
+class LiveKitAdapter(private val context: android.content.Context, private val torProxy: String) {
     
     private var room: Room? = null
     val isConnected = MutableStateFlow(false)

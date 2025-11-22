@@ -4,12 +4,7 @@ class ZeusAdapter(private val torProxy: String) {
     
     suspend fun addInvoice(amountSats: Long, memo: String): String {
         // Create Lightning invoice via Tor endpoint
-        return "
-                    
-                        ƒ
-                        BOLT11 INVOICE RESULT
-                    
-                "
+        return "lnbc1..." // Placeholder BOLT11 invoice
     }
     
     suspend fun payInvoice(bolt11: String): PaymentResult {
