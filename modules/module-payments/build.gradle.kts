@@ -9,5 +9,5 @@ android {
 }
 
 dependencies {
-    implementation(project(":libs:zeus"))
+    api(project(":libs:zeus"))
 }

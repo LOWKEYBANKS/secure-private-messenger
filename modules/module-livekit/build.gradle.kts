@@ -9,5 +9,5 @@ android {
 }
 
 dependencies {
-    implementation(project(":libs:livekit"))
+    api(project(":libs:livekit"))
 }
