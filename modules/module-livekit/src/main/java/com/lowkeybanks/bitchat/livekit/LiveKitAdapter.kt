@@ -3,6 +3,7 @@ package com.lowkeybanks.bitchat.livekit
 import io.livekit.android.LiveKit
 import io.livekit.android.Room
 import io.livekit.android.events.RoomEvent
+import io.livekit.android.room.track.AudioTrack
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class LiveKitAdapter(private val context: android.content.Context, private val torProxy: String) {
