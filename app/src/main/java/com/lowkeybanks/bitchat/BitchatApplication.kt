@@ -19,6 +19,11 @@ class BitchatApplication : Application() {
         super.onCreate()
         
         // Initialize core components
+        val sodiumLoaded = com.lowkeybanks.bitchat.crypto.SodiumLoader.load()
+        if (!sodiumLoaded) {
+            android.util.Log.e("BitchatApplication", "Failed to load Libsodium")
+        }
+
         cryptoWrapper = LibsodiumWrapper()
         cashuWallet = CashuWallet()
         
