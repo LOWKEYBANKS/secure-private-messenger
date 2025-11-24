@@ -4,6 +4,8 @@ import android.app.Application
 import android.content.Intent
 import com.lowkeybanks.bitchat.crypto.LibsodiumWrapper
 import com.lowkeybanks.bitchat.services.TorService
+import kotlinx.coroutines.launch
+import com.lowkeybanks.bitchat.tor.TorMode
 import com.lowkeybanks.bitchat.livekit.LiveKitAdapter
 import com.lowkeybanks.bitchat.payments.CashuWallet
 import com.lowkeybanks.bitchat.payments.ZeusAdapter
@@ -18,6 +20,12 @@ class BitchatApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         
+        // Initialize Tor
+        com.lowkeybanks.bitchat.tor.TorManager.init(this)
+        kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.IO).launch {
+            com.lowkeybanks.bitchat.tor.TorManager.applyMode(this@BitchatApplication, com.lowkeybanks.bitchat.tor.TorMode.ON)
+        }
+
         // Initialize core components
         val sodiumLoaded = com.lowkeybanks.bitchat.crypto.SodiumLoader.load()
         if (!sodiumLoaded) {
@@ -28,10 +36,11 @@ class BitchatApplication : Application() {
         cashuWallet = CashuWallet()
         
         // Initialize adapters
-        liveKitAdapter = LiveKitAdapter(this, "127.0.0.1:9050")
-        zeusAdapter = ZeusAdapter("127.0.0.1:9050")
+        liveKitAdapter = LiveKitAdapter(this, "127.0.0.1:9060")
+        zeusAdapter = ZeusAdapter("127.0.0.1:9060")
         
-        // Start Tor service
-        startService(Intent(this, TorService::class.java))
+        // Start Tor service (legacy service, might be redundant with TorManager but keeping for now)
+        // startService(Intent(this, TorService::class.java)) 
+        // Commented out legacy service as TorManager handles Arti now
     }
 }
