@@ -8,17 +8,21 @@ import java.util.concurrent.TimeUnit
 import java.net.InetAddress
 
 /**
- * Provide OkHttp clients that route through a local Tor SOCKS proxy (default 127.0.0.1:9050).
- * Use OkHttpProvider.torHttpClient() everywhere you make network calls.
+ * Centralized OkHttp provider that forces traffic through a local Tor SOCKS5 proxy.
+ * Replace ad-hoc OkHttpClient() usage with OkHttpProvider.torHttpClient()
  */
+
 object OkHttpProvider {
 
-    // Basic DNS-over-Tor: we return localhost DNS (OkHttp will use the SOCKS proxy for outbound)
+    // Force DNS resolution to localhost so SOCKS proxy handles DNS
     private val torDns = Dns { hostname ->
-        // Do not perform system DNS lookups which can leak — resolve to localhost to force SOCKS to handle DNS.
         arrayOf(InetAddress.getByName("127.0.0.1"))
     }
 
+    /**
+     * Returns an OkHttpClient configured with a SOCKS proxy (default 127.0.0.1:9050).
+     * Adjust timeouts per needs.
+     */
     fun torHttpClient(socksHost: String = "127.0.0.1", socksPort: Int = 9050): OkHttpClient {
         val proxy = Proxy(Proxy.Type.SOCKS, InetSocketAddress(socksHost, socksPort))
         return OkHttpClient.Builder()
@@ -28,6 +32,16 @@ object OkHttpProvider {
             .readTimeout(30, TimeUnit.SECONDS)
             .callTimeout(60, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
+            .build()
+    }
+
+    /**
+     * Convenience client for non-Tor testing (do not use in production).
+     */
+    fun defaultClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .connectTimeout(20, TimeUnit.SECONDS)
+            .readTimeout(20, TimeUnit.SECONDS)
             .build()
     }
 }
