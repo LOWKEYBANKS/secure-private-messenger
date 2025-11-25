@@ -20,7 +20,7 @@ android {
 
 dependencies {
     implementation(project(":libs:libsodium"))
-    implementation(project(":libs:livekit"))
+    implementation(project(":libs:livekit:livekit-android-sdk"))
     implementation(project(":modules:core-crypto"))
     implementation(project(":modules:module-livekit"))
     implementation(project(":modules:module-payments"))

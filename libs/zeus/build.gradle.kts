@@ -4,8 +4,12 @@ plugins {
 }
 
 android {
-    namespace = "libs.zeus"
+    namespace = "com.lowkeybanks.bitchat.zeus"
     compileSdk = 34
+
+    defaultConfig {
+        minSdk = 24
+    }
 }
 
 dependencies {}

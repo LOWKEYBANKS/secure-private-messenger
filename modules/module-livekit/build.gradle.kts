@@ -13,5 +13,5 @@ android {
 }
 
 dependencies {
-    api(project(":libs:livekit"))
+    api(project(":libs:livekit:livekit-android-sdk"))
 }

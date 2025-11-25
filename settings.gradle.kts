@@ -17,7 +17,7 @@ rootProject.name = "secure-private-messenger"
 include(":app")
 
 include(":libs:libsodium")
-include(":libs:livekit")
+include(":libs:livekit:livekit-android-sdk")
 include(":libs:tor")
 include(":libs:briar")
 include(":libs:zeus")
