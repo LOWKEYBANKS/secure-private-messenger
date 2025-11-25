@@ -11,11 +11,11 @@ plugins {
 
 android {
     namespace 'io.livekit.android'
-    compileSdkVersion androidSdk.compileVersion
+    compileSdkVersion 34
 
     defaultConfig {
-        minSdkVersion androidSdk.minVersion
-        targetSdkVersion androidSdk.targetVersion
+        minSdkVersion 24
+        targetSdkVersion 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
