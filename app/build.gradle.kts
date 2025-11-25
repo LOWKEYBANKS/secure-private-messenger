@@ -24,6 +24,7 @@ dependencies {
     implementation(project(":modules:core-crypto"))
     implementation(project(":modules:module-livekit"))
     implementation(project(":modules:module-payments"))
+    implementation(project(":libs:tor"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

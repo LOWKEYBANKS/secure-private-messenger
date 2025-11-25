@@ -2,7 +2,6 @@ package com.lowkeybanks.bitchat
 
 import android.app.Application
 import android.content.Intent
-import com.lowkeybanks.bitchat.crypto.LibsodiumWrapper
 import com.lowkeybanks.bitchat.services.TorService
 import kotlinx.coroutines.launch
 import com.lowkeybanks.bitchat.tor.TorMode
@@ -12,7 +11,7 @@ import com.lowkeybanks.bitchat.payments.ZeusAdapter
 
 class BitchatApplication : Application() {
     
-    lateinit var cryptoWrapper: LibsodiumWrapper
+    lateinit var encryptionService: com.lowkeybanks.bitchat.crypto.EncryptionService
     lateinit var cashuWallet: CashuWallet
     lateinit var zeusAdapter: ZeusAdapter
     lateinit var liveKitAdapter: LiveKitAdapter
@@ -32,7 +31,7 @@ class BitchatApplication : Application() {
             android.util.Log.e("BitchatApplication", "Failed to load Libsodium")
         }
 
-        cryptoWrapper = LibsodiumWrapper()
+        encryptionService = com.lowkeybanks.bitchat.crypto.EncryptionService(this)
         cashuWallet = CashuWallet()
         
         // Initialize adapters
