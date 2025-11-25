@@ -6,6 +6,10 @@ plugins {
 android {
     namespace = "com.lowkeybanks.bitchat.payments"
     compileSdk = 34
+
+    defaultConfig {
+        minSdk = 24
+    }
 }
 
 dependencies {
