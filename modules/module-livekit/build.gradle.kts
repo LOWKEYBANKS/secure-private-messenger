@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "modules.module_livekit"
+    namespace = "com.lowkeybanks.bitchat.livekit"
     compileSdk = 34
 }
 

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "modules.module_payments"
+    namespace = "com.lowkeybanks.bitchat.payments"
     compileSdk = 34
 }
 
