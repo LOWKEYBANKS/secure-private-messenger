@@ -82,7 +82,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("co.infinum:android-pretty-logger:1.0.0")
     
-    // External Dependencies (REPLACING BROKEN MODULES!)
+    // Cryptographic Libraries (External Dependencies)
     implementation("org.whispersystems:curve25519-java:0.5.1")
     implementation("org.whispersystems:signal-protocol-java:2.8.0")
     
@@ -94,5 +94,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
+
 
 
