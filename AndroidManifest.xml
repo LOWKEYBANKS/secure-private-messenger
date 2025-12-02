@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- TOR & Network Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.
+                    
+                        ƒ
+                        ACCESS NETWORK STATE
+                    
+                " />
+    <uses-permission android:name="android.permission.
+                    
+                        ƒ
+                        ACCESS WIFI STATE
+                    
+                " />
+    <uses-permission android:name="android.permission.
+                    
+                        ƒ
+                        FOREGROUND SERVICE
+                    
+                " />
+    <uses-permission android:name="android.permission.
+                    
+                        ƒ
+                        WAKE LOCK
+                    
+                " />
+    
+    <!-- P2P & Bluetooth Permissions -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.
+                    
+                        ƒ
+                        BLUETOOTH ADMIN
+                    
+                " />
+    <uses-permission android:name="android.permission.
+                    
+                        ƒ
+                        ACCESS FINE LOCATION
+                    
+                " />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SecurePrivateMessenger"
+        android:name=".BaseApplication"
+        tools:targetApi="31">
+        
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SecurePrivateMessenger.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+    </application>
+
+</manifest>
