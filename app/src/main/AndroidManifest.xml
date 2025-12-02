@@ -1,52 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    
-    <!-- Network Permissions -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permissions for TOR and Network Access -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
-    <!-- Bluetooth Mesh -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    
-    <!-- Storage & Camera -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    
+    <uses-permission android:name="android.permission.
+                    
+                        ƒ
+                        ACCESS NETWORK STATE
+                    
+                " />
+    <uses-permission android:name="android.permission.
+                    
+                        ƒ
+                        ACCESS WIFI STATE
+                    
+                " />
+    <uses-permission android:name="android.permission.
+                    
+                        ƒ
+                        FOREGROUND SERVICE
+                    
+                " />
+    <uses-permission android:name="android.permission.
+                    
+                        ƒ
+                        WAKE LOCK
+                    
+                " />
+
     <application
-        android:name=".BitchatApplication"
         android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:theme="@style/Theme.Bitchat"
-        android:usesCleartextTraffic="false">
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SecurePrivateMessenger"
+        android:name=".BaseApplication"
+        tools:targetApi="31">
         
-        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Bitchat.NoActionBar">
+            android:theme="@style/Theme.SecurePrivateMessenger.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
-        <!-- Tor Service -->
-        <service
-            android:name=".services.TorService"
-            android:exported="false" />
-            
-        <!-- LiveKit Service -->
-        <service
-            android:name=".services.LiveKitService"
-            android:exported="false" />
-            
     </application>
+
 </manifest>
+
