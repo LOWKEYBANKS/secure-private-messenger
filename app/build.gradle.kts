@@ -1,33 +1,36 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "com.lowkeybanks.bitchat"
-    compileSdk = 34
-    
+    namespace = "com.bitchat.android"
+    compileSdk = libs.versions.compileSdk.get().toInt()
+
     defaultConfig {
-        applicationId = "com.lowkeybanks.bitchat"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0.0"
+        applicationId = "com.bitchat.droid"
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+        versionCode = 18
+        versionName = "1.2.2"
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        
-        multiDexEnabled = true
-    }
-    
-    buildTypes {
-        debug {
-            isDebuggable = true
-            isMinifyEnabled = false
-            applicationIdSuffix = ".debug"
+        vectorDrawables {
+            useSupportLibrary = true
         }
-        
+    }
+
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs.
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles.
+        includeInBundle = false
+    }
+
+    buildTypes {
         release {
-            isDebuggable = false
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
@@ -36,64 +39,76 @@ android {
             )
         }
     }
-    
     compileOptions {
-        sourceCompatibility = JavaVersion.
-                    
-                        ƒ
-                        VERSION 17
-                    
-                
-        targetCompatibility = JavaVersion.
-                    
-                        ƒ
-                        VERSION 17
-                    
-                
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
-    
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
-    
-    packagingOptions {
+    buildFeatures {
+        compose = true
+    }
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError = false
+        checkReleaseBuilds = false
+    }
 }
 
 dependencies {
-    // Core Android Libraries
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    // Core Android dependencies
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
     
-    // Security & Privacy Libraries
-    implementation("info.guardianproject.netcipher:netcipher:2.1.0")
+    // Compose
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.bundles.compose)
     
-    // Database
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
+    // Lifecycle
+    implementation(libs.bundles.lifecycle)
     
-    // Networking & TOR
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("co.infinum:android-pretty-logger:1.0.0")
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
     
-    // Cryptographic Libraries (External Dependencies)
-    implementation("org.whispersystems:curve25519-java:0.5.1")
-    implementation("org.whispersystems:signal-protocol-java:2.8.0")
+    // Permissions
+    implementation(libs.accompanist.permissions)
     
-    // MultiDex Support
-    implementation("androidx.multidex:multidex:2.0.1")
+    // Cryptography
+    implementation(libs.bundles.cryptography)
     
-    // Testing Dependencies
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-}
+    // JSON
+    implementation(libs.gson)
+    
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.android)
+    
+    // Bluetooth
+    implementation(libs.nordic.ble)
 
+    // WebSocket
+    implementation(libs.okhttp)
+
+    // Arti (Tor in Rust) Android bridge - use published AAR with native libs
+    implementation("info.guardianproject:arti-mobile-ex:1.2.3")
+
+    // Google Play Services Location
+    implementation(libs.gms.location)
+
+    // Security preferences
+    implementation(libs.androidx.security.crypto)
+    
+    // Testing
+    testImplementation(libs.bundles.testing)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.bundles.compose.testing)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+}
 
 
