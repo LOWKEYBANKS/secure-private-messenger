@@ -6,7 +6,12 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.
+                    
+                        ƒ
+                        FAIL ON PROJECT REPOS
+                    
+                )
     repositories {
         google()
         mavenCentral()
@@ -16,12 +21,14 @@ rootProject.name = "secure-private-messenger"
 
 include(":app")
 
+// Library modules
 include(":libs:libsodium")
 include(":libs:livekit:livekit-android-sdk")
 include(":libs:tor")
 include(":libs:briar")
 include(":libs:zeus")
 
+// Feature modules  
 include(":modules:core-crypto")
 include(":modules:module-livekit")
 include(":modules:module-payments")
@@ -32,14 +39,3 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
-include(
-    ":app",
-    ":libs:libsodium", 
-    ":libs:tor",
-    ":libs:livekit:livekit-android-sdk",
-    ":modules:core-crypto",
-    ":modules:module-livekit",
-    ":modules:module-payments"
-)
-
-rootProject.name = "secure-private-messenger"
