@@ -1,13 +1,11 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
-    id("maven-publish")
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
+    id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.lowkeybanks.bitchat.core.crypto"
+    namespace = "com.lowkeybanks.bitchat.modules.core.crypto"
     compileSdk = 34
     
     defaultConfig {
@@ -15,38 +13,36 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0.0"
-        
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         
-        // Crypto configuration
+        // Crypto Configuration
         buildConfigField("String", "
                     
                         ƒ
-                        CRYPTO DEFAULT CIPHER
+                        CIPHER ALGORITHM
                     
-                ", "AES-256-GCM")
+                ", "\"AES/GCM/NoPadding\"")
+        buildConfigField("String", "
+                    
+                        ƒ
+                        KEY ALGORITHM
+                    
+                ", "\"X25519\"")
         buildConfigField("int", "
                     
                         ƒ
-                        CRYPTO KEY SIZE
+                        CIPHER KEY SIZE
                     
                 ", "256")
-        buildConfigField("int", "
-                    
-                        ƒ
-                        CRYPTO IV SIZE
-                    
-                ", "96")
     }
     
     buildTypes {
         debug {
             isDebuggable = true
-            isMinifyEnabled = false
             buildConfigField("boolean", "
                     
                         ƒ
-                        ENABLE CRYPTO DEBUG
+                        CRYPTO DEBUG
                     
                 ", "true")
         }
@@ -54,16 +50,16 @@ android {
         release {
             isDebuggable = false
             isMinifyEnabled = true
+            buildConfigField("boolean", "
+                    
+                        ƒ
+                        CRYPTO DEBUG
+                    
+                ", "false")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("boolean", "
-                    
-                        ƒ
-                        ENABLE CRYPTO DEBUG
-                    
-                ", "false")
         }
     }
     
@@ -84,10 +80,6 @@ android {
     
     kotlinOptions {
         jvmTarget = "17"
-        freeCompilerArgs += listOf(
-            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-            "-Xjvm-default=all"
-        )
     }
     
     buildFeatures {
@@ -104,44 +96,29 @@ android {
 dependencies {
     // Core Android
     implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.annotation:annotation:1.7.1")
-    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     
-    // Cryptographic libraries
-    implementation("org.bouncycastle:bcprov-jdk18on:1.77")
-    implementation("org.bouncycastle:bcprov-jdk15on:1.70")
+    // Dependencies on our libs
+    implementation(project(":libs:libsodium"))
+    implementation(project(":libs:briar"))
     
-    // Signal Protocol
+    // Signal Protocol for end-to-end encryption
     implementation("org.whispersystems:signal-protocol-java:2.8.0")
     implementation("org.whispersystems:curve25519-java:0.5.1")
     
-    // JSON serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
-    implementation("com.google.code.gson:gson:2.10.1")
+    // Advanced Cryptography
+    implementation("com.google.crypto.tink:tink-android:1.9.0")
+    implementation("org.bouncycastle:bcprov-jdk18on:1.77")
     
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    // Key Management
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
     
-    // Local project dependencies
-    implementation(project(":libs:libsodium"))
+    // Utilities
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     
     // Testing
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-inline:5.2.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("org.mockito:mockito-core:5.8.0")
-}
-
-// Publishing configuration
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-                groupId = "com.lowkeybanks.bitchat"
-                artifactId = "core-crypto"
-                version = "1.0.0"
-            }
-        }
-    }
 }
